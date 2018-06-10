@@ -1,0 +1,7 @@
+*.exe
+*.class
+*.py[cod]
+*.obj
+*.db
+*.lib
+
