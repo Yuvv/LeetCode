@@ -104,10 +104,10 @@ public class Solution {
             for (j = 1; j <= p.length(); j++) {
                 if (p.charAt(j - 1) == '*') {
                     dp[i][j] = dp[i - 1][j - 1] || dp[i][j - 1] || dp[i - 1][j];
-                } else if (p.charAt(j) == '?') {
+                } else if (p.charAt(j - 1) == '?') {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    dp[i][j] = s.charAt(i) == p.charAt(j) && dp[i - 1][j - 1];
+                    dp[i][j] = s.charAt(i - 1) == p.charAt(j - 1) && dp[i - 1][j - 1];
                 }
             }
         }
