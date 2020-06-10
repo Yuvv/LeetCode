@@ -1,6 +1,9 @@
 # editor specific
 ## vscode
-.vscode
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
 
 ## Jetbrains
 .idea
