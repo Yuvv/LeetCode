@@ -16,9 +16,7 @@
             ],
             "group": "test",
             "presentation": {
-                "echo": true,
                 "reveal": "always",
-                "focus": false,
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
@@ -34,9 +32,50 @@
             "problemMatcher": [],
             "group": "test",
             "presentation":{
-                "echo": true,
                 "reveal": "always",
-                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Run Java File...",
+            "type": "shell",
+            "command": "cp ${file} /tmp/Solution.java && cd /tmp/ && javac Solution.java && java Solution; cd ${workspaceFolder}",
+            "problemMatcher": [],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Run C File...",
+            "type": "shell",
+            "command": "gcc -o a.exe ${file} && ./a.exe",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": {
+                "owner": "c",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
