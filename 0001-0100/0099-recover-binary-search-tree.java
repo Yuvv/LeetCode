@@ -14,6 +14,15 @@ class TreeNode {
     }
 }
 
+/**
+ * 0099-recover-binary-search-tree.java
+ * 想法是先深度遍历，获取排序好的数组，但是它有两个节点位置是交换的，那么数组中肯定有两个未排好序的数值。
+ * 然后把这两个数值对应节点的值交换即可。
+ * PS：好像用这个方法的话就没必要获取数组了，直接dfs遍历一便就可以找到对应未排序的节点了。
+ *
+ * @author Yuvv <yuvv_th@outlook.com>
+ * @date 2021/04/09
+ */
 public class Solution {
 
 	public List<Integer> dfsInOrder(TreeNode root) {
