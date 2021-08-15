@@ -31,7 +31,7 @@
             ],
             "problemMatcher": [],
             "group": "test",
-            "presentation":{
+            "presentation": {
                 "reveal": "always",
                 "panel": "shared",
                 "showReuseMessage": true,
@@ -41,7 +41,7 @@
         {
             "label": "Run Java File...",
             "type": "shell",
-            "command": "cp ${file} /tmp/Solution.java && cd /tmp/ && javac Solution.java && java Solution; cd ${workspaceFolder}",
+            "command": "cp ${file} /tmp/Solution.java ; cd /tmp/ ; javac Solution.java ; java Solution; cd ${workspaceFolder}",
             "problemMatcher": [],
             "group": "test",
             "presentation": {
