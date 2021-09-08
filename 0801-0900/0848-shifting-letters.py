@@ -19,9 +19,10 @@ class Solution:
             cum_sum += shifts[i]
             cum_sum %= 26
             c = chr((ord(S[i]) + cum_sum - a_val) % 26 + a_val)
-            rl.insert(0, c)
+            rl.append(c)
             i -= 1
 
+        rl.reverse()
         return ''.join(rl)
 
 
