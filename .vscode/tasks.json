@@ -42,6 +42,22 @@
             }
         },
         {
+            "label": "Run Java File...(>=JDK-11)",
+            "type": "shell",
+            "command": "java ${file}",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
             "label": "Run Java File...",
             "type": "shell",
             "command": "cp ${file} /tmp/Solution.java ; cd /tmp/ ; javac Solution.java ; java Solution; rm -f /tmp/Solution.java; rm -f /tmp/Solution.class; cd ${workspaceFolder}",
@@ -49,10 +65,7 @@
             "windows": {
                 "command": "cp ${file} D:\\Solution.java ; cd D:\\ ; javac Solution.java ; if (Test-Path Solution.class) {rm Solution.java; java Solution}; if (Test-Path Solution.class) {rm Solution.class}; cd ${workspaceFolder}",
             },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "test",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
