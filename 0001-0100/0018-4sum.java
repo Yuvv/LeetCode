@@ -1,15 +1,19 @@
-class Solution {
+import java.util.*;
+
+/*
+ * 0018-4sum.java
+ *
+ * @author Yuvv <yuvv_th@outlook.com>
+ * @date 2018/11/16
+ */
+public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
-        Map<Integer, List<List<Integer>>> map = new HashMap<>();
+        Map<Integer, List<int[]>> map = new HashMap<>();
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                map.putIfAbsent(nums[i] + nums[j], new ArrayList<>());
-                List<List<Integer>> temp = map.get(nums[i] + nums[j]);
-                List<Integer> curPair = new ArrayList<>(2);
-                curPair.add(i);
-                curPair.add(j);
-                temp.add(curPair);
+                map.computeIfAbsent(nums[i] + nums[j], k -> new ArrayList<>())
+                    .add(new int[] {i, j});
             }
         }
 
@@ -17,10 +21,10 @@ class Solution {
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (map.containsKey(target - nums[i] - nums[j])) {
-                    for (List<Integer> pair : map.get(target - nums[i] - nums[j])) {
-                        if (i != pair.get(0) && j != pair.get(0) &&
-                                i != pair.get(1) && j != pair.get(1)) {
-                            set.add(new NSum<>(nums[i], nums[j], nums[pair.get(0)], nums[pair.get(1)]));
+                    for (int[] pair : map.get(target - nums[i] - nums[j])) {
+                        if (i != pair[0] && j != pair[0] &&
+                                i != pair[1] && j != pair[1]) {
+                            set.add(new NSum<>(nums[i], nums[j], nums[pair[0]], nums[pair[1]]));
                         }
                     }
                 }
@@ -33,6 +37,14 @@ class Solution {
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        // [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+        System.out.println(s.fourSum(new int[] {1,0,-1,0,-2,2}, 0));
+        // [[2,2,2,2]]
+        System.out.println(s.fourSum(new int[] {2,2,2,2,2}, 8));
     }
 }
 
