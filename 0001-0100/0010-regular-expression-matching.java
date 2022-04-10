@@ -36,7 +36,7 @@ class State {
 
 class Solution {
     /**
-     * 构建状态机完成
+     * 构建状态机完成 -- 状态机本质还是递归，可以用递归做
      * https://leetcode.com/problems/regular-expression-matching/description/
      */
     public boolean isMatch(String s, String p) {
