@@ -6,7 +6,7 @@ import java.util.concurrent.Semaphore;
  * @author Yuvv <yuvv_th@outlook.com>
  * @date 2020/05/17
  */
-class FooBar {
+public class FooBar {
     private int n;
 
     private final Semaphore fooSemaphore;
@@ -42,16 +42,14 @@ class FooBar {
             fooSemaphore.release();
         }
     }
-}
 
-
-public class Main {
     public static void main(String[] args) throws Exception {
+        int n;
         if (args.length == 0) {
-            System.out.println("Argument `n` required");
-            return;
+            n = 10;
+        } else {
+           n = Integer.parseInt(args[0]);
         }
-        int n = Integer.parseInt(args[0]);
         Runnable fooPrinter = () -> System.out.print("foo");
         Runnable barPrinter = () -> System.out.print("bar");
 

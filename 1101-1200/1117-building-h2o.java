@@ -41,6 +41,7 @@ public class H2O {
             executor.execute(new OxygenRunnable(h2o));
             executor.execute(new HydrogenRunnable(h2o));
         }
+        executor.shutdown();
     }
 }
 

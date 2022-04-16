@@ -64,16 +64,15 @@ class ZeroEvenOdd {
             zeroSemaphore.release();
         }
     }
-}
 
-public class Main {
     public static void main(String[] args) throws Exception {
         IntConsumer consumer = System.out::print;
+        int n;
         if (args.length == 0) {
-            System.out.println("Argument `n` required");
-            return;
+            n = 10;
+        } else {
+            n = Integer.parseInt(args[0]);
         }
-        int n = Integer.parseInt(args[0]);
         // `0102030405...0n` expected
         ZeroEvenOdd zeroEvenOdd = new ZeroEvenOdd(n);
 
