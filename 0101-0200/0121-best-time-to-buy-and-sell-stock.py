@@ -12,6 +12,7 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         last_min = 1e100
         cur_max = 0
+        # 循环数组，找出最小值与右边的值的diff的最大值
         for p in prices:
             cur_value = p - last_min
             if cur_max < cur_value:

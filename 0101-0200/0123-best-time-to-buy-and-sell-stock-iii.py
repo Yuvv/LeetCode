@@ -11,22 +11,22 @@ from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         p_len = len(prices)
-        # build dp
+        # 第一轮从左往右，记录在每一个位置所能达到的最大收益
         dp_sell_1 = []
         mn_val = prices[0]
         for i in range(p_len):
             mn_val = min(prices[i], mn_val)
             dp_sell_1.append(max(0, prices[i] - mn_val))
-        # build dp
-        dp_buy_2 = [0 for i in range(p_len)]
+        # 第二轮从右往左，记录在每一个位置买入然后再最佳位置卖出所能达到的最大收益
+        dp_buy_2 = [0 for _ in range(p_len)]
         i = p_len - 1
         mx_val = prices[-1]
         while i >= 0:
             mx_val = max(prices[i], mx_val)
             dp_buy_2[i] = max(0, mx_val - prices[i])
             i -= 1
-        # build post max
-        dp_post_mx = [0 for i in range(p_len)]
+        # build post max - 后缀最大值数组
+        dp_post_mx = [0 for _ in range(p_len)]
         i = p_len - 1
         mx_val = dp_buy_2[-1]
         while i >= 0:

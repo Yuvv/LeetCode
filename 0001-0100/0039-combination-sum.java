@@ -22,8 +22,10 @@ public class Solution {
             // 注意每次循环都必须 new 一个新的 list 出来
             List<Integer> list = new ArrayList<>(currentList);
             list.add(val);
+            // 递归循环查找目标数
             int nextTarget = target - val;
             if (nextTarget > 0) {
+                // 每个数可用多次，每次都从 i 开始继续找，所以也不会重复
                 getCombinationSum(candidates, nextTarget, i, list, resultList);
             } else if (nextTarget == 0) {
                 resultList.add(list);

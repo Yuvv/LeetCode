@@ -12,6 +12,7 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         cur_max = 0
         last_val = None
+        # 贪心，只要右边比左边大即可
         for p in prices:
             if last_val is not None:
                 if p > last_val:

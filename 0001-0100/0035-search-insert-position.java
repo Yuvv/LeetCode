@@ -1,11 +1,17 @@
-class Solution {
+/*
+ * 0035-search-insert-position.java
+ *
+ * @author Yuvv <yuvv_th@outlook.com>
+ * @date 2018/04/08
+ */
+public class Solution {
     public int searchInsert(int[] nums, int target) {
         if (nums.length == 0) {
             return 0;
         }
         return binarySearch(nums, 0, nums.length-1, target);
     }
-    
+
     // 二分法实现
     public int binarySearch(int[] nums, int start, int end, int target) {
         // end 可能比 start 小的
@@ -21,7 +27,7 @@ class Solution {
                 return start + 1;
             }
         }
-            
+
         int mid = (start + end) / 2;
         if (nums[mid] > target) {
             return binarySearch(nums, start, mid-1, target);
