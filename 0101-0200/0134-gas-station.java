@@ -5,8 +5,9 @@
  * @date 2021/07/19
  */
 public class Solution {
-    public int canCompleteCircuit(int[] gas, int[] cost) {
+    public int canCompleteCircuit_on2(int[] gas, int[] cost) {
         int i, j, k;
+        // 逐个位置尝试，找到了就直接返回
         for (i = 0; i < gas.length; i++) {
             if (gas[i] < cost[i]) {
                 continue;
@@ -25,6 +26,25 @@ public class Solution {
             }
         }
         return -1;
+    }
+
+    // 两指针碰撞 - 这种方式其实并不在乎指针的初始位置，只要过程最终能保证跑完全程就行
+    int canCompleteCircuit(int[] gas, int[] cost) {
+        int start = gas.length - 1;
+        int end = 0;
+        int sum = gas[start] - cost[start];
+        while (start > end) {
+            if (sum >= 0) {
+                // 如果当前还充足，就继续往后面走
+                sum += gas[end] - cost[end];
+                end++;
+            } else {
+                // 当前不充足，就退后一步，加点油直到还能往后走
+                start--;
+                sum += gas[start] - cost[start];
+            }
+        }
+       return sum >= 0 ? start : -1;
     }
 
     public static void main(String[] args) {

@@ -20,6 +20,7 @@ public class Solution {
 		// check
 		int maxCount = 1;
 		for (int num : nums) {
+			// 当不包含 num-1 时才开始循环检测（此时可能是一段区间的起始位置）
 			if (!set.contains(num - 1)) {
 				int count = 0;
 				while (set.contains(num)) {

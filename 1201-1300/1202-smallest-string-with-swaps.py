@@ -9,9 +9,15 @@ from typing import List, Dict, Set
 
 
 class Solution:
+    '''
+    这一题的解题思路：
+    - 首先要搞清楚连通集。在这一题里，如果 [a, b] 能够交换，[b, c] 能够交换，[a, c] 也就能够交换
+      abc 就在一个连通集里面。其它情况同理。
+    - 然后我们要做的就是找到所有的连通集。
+    - 再将连通集里面的字符按照字母顺序排序，填入各个位置即可
+    '''
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
         # build groups
-
         group_dict: Dict[int, Set[int]] = dict()
         groups: List[Set[int]] = []
         for u, v in pairs:
