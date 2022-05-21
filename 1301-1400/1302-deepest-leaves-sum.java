@@ -11,8 +11,10 @@ public class Solution {
         LinkedList<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int sum = 0;
+        // 层级遍历
         while (!queue.isEmpty()) {
             int size = queue.size();
+            // 每次都重置 sum，计算当前层级的和，那么遍历到最后一个层级就是最终结果
             sum = 0;
             while (size > 0) {
                 TreeNode node = queue.pollFirst();

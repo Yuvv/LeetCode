@@ -10,6 +10,12 @@ import java.util.HashSet;
  * @date 2021/09/01
  */
 public class Solution {
+    /**
+     * Union-Find  --  Accepted
+     *
+     * Time: O(N)
+     * Space: O(N)
+     */
     public int arrayNesting(int[] nums) {
         Map<Integer, Integer> valIdxMap = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
@@ -30,7 +36,8 @@ public class Solution {
                 num = nums[num];
                 curChainSet.add(num);
             }
-            // prefix
+            // prefix -- there is no need to fin prefix since "all the values of nums are unique",
+            // so the chain is always a ring if it exists
             num = originNum;
             for (int i = valIdxMap.get(num); !curChainSet.contains(nums[i]); num = nums[i]) {
                 curChainSet.add(nums[i]);
@@ -41,6 +48,52 @@ public class Solution {
         }
 
         return maxLen;
+    }
+
+    /**
+     * Using visited array - Accepted
+     * Time: O(N)
+     * Space: O(N)  -- but more space efficient
+     */
+    public int arrayNesting_visited(int[] nums) {
+        boolean[] visited = new boolean[nums.length];
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]) {
+                int count = 0;
+                int num = nums[i];
+                do {
+                    visited[num] = true;
+                    count++;
+                    num = nums[num];
+                } while (!visited[num]);
+                max = Math.max(count, max);
+            }
+        }
+        return max;
+    }
+
+    /**
+     * without extra space - Accepted
+     * Time: O(N)
+     * Space: O(1)
+     */
+    public int arrayNesting_space_o1(int[] nums) {
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= 0) {  // which means not visited
+                int count = 0;
+                int num = nums[i];
+                do {
+                    int tmp = num;
+                    count++;
+                    num = nums[num];
+                    nums[tmp] = -1;
+                } while (nums[num] >= 0);
+                max = Math.max(count, max);
+            }
+        }
+        return max;
     }
 
     public static void main(String[] args) {
