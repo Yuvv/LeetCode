@@ -9,6 +9,27 @@ import java.util.stream.Collectors;
  */
 public class Solution {
     public List<Integer> findDuplicates(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] - 1 != i) {
+                int tmp = nums[nums[i] - 1];
+                if (tmp == nums[i]) {
+                    break;
+                }
+                nums[nums[i] - 1] = nums[i];
+                nums[i] = tmp;
+            }
+        }
+
+        List<Integer> resList = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] - 1 != i) {
+                resList.add(nums[i]);
+            }
+        }
+        return resList;
+    }
+    // AC but not good
+    public List<Integer> findDuplicates_hashmap(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int n : nums) {
             map.put(n, map.getOrDefault(n, 0) + 1);
