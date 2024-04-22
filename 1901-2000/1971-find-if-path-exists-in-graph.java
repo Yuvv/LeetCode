@@ -8,6 +8,30 @@ import java.util.*;
  */
 public class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
+        int[] union = new int[n];
+        for (int i = 1; i < n; i++) {
+            union[i] = i;
+        }
+        for (int[] edge : edges) {
+            int a = UnionFind(union, edge[0]);
+            int b = UnionFind(union, edge[1]);
+            int u = Math.min(a, b);
+            union[a] = u;
+            union[b] = u;
+            union[edge[0]] = u;
+            union[edge[1]] = u;
+        }
+        return UnionFind(union, source) == UnionFind(union, destination);
+    }
+
+    private int UnionFind(int[] union, int u) {
+        while (union[u] != u) {
+            u = union[u];
+        }
+        return u;
+    }
+
+    public boolean validPath_dfs(int n, int[][] edges, int source, int destination) {
         Map<Integer, Set<Integer>> graph = new HashMap<>(n);
         for (int[] edge : edges) {
             graph.computeIfAbsent(edge[0], k -> new HashSet<>()).add(edge[1]);
