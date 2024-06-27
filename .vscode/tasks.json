@@ -102,6 +102,24 @@
                 "showReuseMessage": true,
                 "clear": false
             }
-        }
+        },
+        {
+            "label": "Run JS File...",
+            "type": "shell",
+            "command": "node",
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
     ]
 }
