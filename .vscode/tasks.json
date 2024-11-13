@@ -74,6 +74,22 @@
             }
         },
         {
+            "label": "Run Rust File...",
+            "type": "shell",
+            "command": "cp ${file} /tmp/solution.rs ; cd /tmp/ ; rustc solution.rs ; ./solution; rm -f /tmp/solution.rs; rm -f /tmp/solution; cd ${workspaceFolder}",
+            "problemMatcher": [],
+            "windows": {
+                "command": "cp ${file} D:\\solution.rs ; cd D:\\ ; rustc solution.rs ; if (Test-Path solution.exe) {rm solution.rs; ./solution.exe}; if (Test-Path solution.exe) {rm solution.exe}; cd ${workspaceFolder}",
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
             "label": "Run C File...",
             "type": "shell",
             "command": "gcc -o a.exe ${file} && ./a.exe",
