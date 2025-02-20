@@ -10,6 +10,25 @@ import java.util.stream.Collectors;
  */
 public class Solution {
     public String findDifferentBinaryString(String[] nums) {
+        Set<Integer> set = Stream.of(nums)
+                .map(s -> Integer.parseInt(s, 2))
+                .sorted()
+                .collect(Collectors.toSet());
+        String res = null;
+        for (int i = 0; i <= nums.length; i++) {
+            if (!set.contains(i)) {
+                res = Integer.toBinaryString(i);
+                break;
+            }
+        }
+        while (res.length() < nums[0].length()) {
+            res = "0" + res;
+        }
+        return res;
+    }
+    
+    // submit at 2021/08/27
+    public String findDifferentBinaryString_old(String[] nums) {
         List<Integer> list = Stream.of(nums)
                 .map(s -> Integer.parseInt(s, 2))
                 .sorted()
