@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.*;
 
 /**
- * 2715-robot-collisions.java
+ * 2751-robot-collisions.java
  *
  * @author Yuvv <yuvv_th@outlook.com>
  * @date 2024/07/13
